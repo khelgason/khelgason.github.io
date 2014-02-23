@@ -1,0 +1,199 @@
+---
+title       : Resume
+subtitle    : Kristbjorn Helgason
+author      : KrizUp
+job         : 
+framework   : revealjs  # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [nvd3, leaflet]
+ext_widgets : {rCharts: libraries/nvd3 libraries/rickshaw libraries/polycharts}
+mode        : selfcontained # {standalone, draft}
+revealjs:
+  theme: sky
+  transition: concave
+  center: "true"
+  previewLinks: "true"
+--- #cover
+
+## Resumé
+<p>
+### Kristbjörn Helgason
+<font size="4">my life in a few HTML slides, automatically generated in R</font>
+<br><font size="2">Press -Esc- for overview of slides</font>
+
+--- #info &vertical
+
+## Who
+
+```{r rick, results = 'asis', comment = NA, message = F, echo = F}
+require(rCharts)
+infoKH <- data.frame(item=c('Born on:', 'Married to:', 'Father of:', 'Hobbies:', 'Hobbies:'),
+                     score=c('2 April 1979', 'Inga Maria', 'Julia, Jakob & Joel', 'Reproducable research', 'Technology, Jazz, NBA...'),
+                     numb=c(2,2,3,1,4),
+                     xdumb=c(1,2,3,4.5,5),
+                     type=c('info', 'info', 'info', 'hobby', 'hobby'))
+
+r1 <- rPlot(score ~ item , data = infoKH, type = "point", color='type')
+r1$set(width=700, height=320)
+r1$guides(y=list(title=""),x=list(title=""))
+r1
+```
+
+<p> <br> <font size="5">&#8595 Where</font> </p>
+
+*** 
+## Where
+
+```{r map, results = 'asis', comment = NA, message = F, echo = F}
+require(rCharts)
+require(rMaps)
+require(knitr)
+require(ggplot2)
+require(ggmap)
+require(plyr)
+cities <- c('Reykjavik, Iceland', 'New York, NY', 'Stockholm, Sweden', 'Trondheim, Norway')
+places <- c('Asmundarsafn, Reykjavik, Iceland', 'Columbia University, New York, NY', 'Karolinska, Stockholm, Sweden', 'Trondheim, Norway')
+
+# get coordinate of each city using ggmap::geocode
+positions <- llply(.data=places, .fun=geocode)
+names(positions) <- substr(cities, 1, 3)
+map <- Leaflet$new()
+map$tileLayer(provider = 'Stamen.TonerBackground')
+map$setView(c(54,-18), zoom = 2)
+map$marker(c(positions$Rey$lat, positions$Rey$lon),
+            bindPopup = paste(cities[1],"<p><a href='http://en.wikipedia.org/wiki/Reykjav%C3%ADk'> Home </a>"))
+map$marker(c(positions$New$lat, positions$New$lon),
+            bindPopup = paste(cities[2],"<p><a href='http://www.columbia.edu'> Studied </a>"))
+map$marker(c(positions$Sto$lat, positions$Sto$lon),
+            bindPopup = paste(cities[3],'<p><a href="http://www.visitstockholm.com/"> Born </a>'))
+map$marker(c(positions$Tro$lat, positions$Tro$lon),
+            bindPopup = paste(cities[4],"<p><a href='http://www.marintek.no'> Research Cooperation </a>"))
+map$set(width=700, height=250)
+map
+# map$show('inline')
+```
+<font size="4"> Use backspace to go back to map </font>  
+
+--- &vertical
+
+## Education
+```{r edu, results = 'asis', comment = NA, message = F, echo = F}
+require(rCharts)
+schools <- c('1.MH', '2.University of Iceland', '3.Columbia University',  '4.Reykjavik University')
+eduKH <- data.frame(School=schools,
+                    Degree=c('Gymnasium', 'B.Sc.', 'B.Sc.', 'M.Sc.'),
+                    Year=c(1998, 2002, 2004, 2012),
+                    Knowledge=c(1, 3, 5, 9))
+r1 <- rPlot(Knowledge ~ School , data = eduKH, type = "bar", color='Degree')
+r1$set(width=700, height=320)
+r1$guides(y=list(title="Degree of knowledge"),x=list(title=""))
+r1
+# # r1
+# n1 <- nPlot(Knowledge ~ School , data = eduKH, type = "bar", group='Degree', type = 'multiBarChart')
+# n1$show('inline')
+# require(ggplot2)
+# usp = reshape2::melt(USPersonalExpenditure)
+# # get the decades into a date Rickshaw likes
+# usp$Var2 <- as.numeric(as.POSIXct(paste0(usp$Var2, "-01-01")))
+# p4 <- Rickshaw$new()
+# p4$layer(value ~ Var2, group = "Var1", data = usp, type = "area", width = 560)
+# # p4$print("chart6")
+# p4
+```
+
+<p><br> &#8595 </p>
+
+***
+### M.Sc. Degree
+#### Decision Engineering, Reykjavik University, 2012
+
+- Emphasis on data driven decisions and visualization
+- <a href="http://skemman.is/item/view/1946/12679;jsessionid=ECCF315463B478DC76353EC9720941E4" target="_blank">Thesis: Selecting optimum location and type of wind turbines in Iceland</a>
+<p></p>
+<center><img src="https://dl.dropboxusercontent.com/u/10546458/HRgrades.png" alt="Grades" align="middle"</center>
+
+***
+
+### B.S. Degree
+#### Physics, University of Iceland, 2004
+<font size="5" color="grey">Solid ground in quantitative work and data analysis</font>
+
+<p><br></p>
+
+### Gymnasium
+#### Menntaskólinn við Hamrahlið, 1998
+<font size="5" color="grey">For what it's worth</font>
+
+
+--- #Jobs
+
+## Jobs
+
+- *Marorka (current job)*
+  - <font size=6>Statistical Analysis and visualization for web and reports</font>
+- *Íslandsbanki (2006-2010)*
+  - <font size=6>Fixed Income fund management and quantatative analysis</font>
+- *Actavis (2004-2006)*
+  - <font size=6>QA Lab Data Analysis and Equipment Validation</font>
+- *HÍ teaching assistant (2003-2004)*
+  - <font size=6>Teaching Physics Lab-Sessoins</font>
+- *Landspítali (2002-204)*
+  - <font size=6>Statistical Analysis; Part-time</font>
+
+
+--- #skills &vertical
+
+## Skills
+
+- All things R
+  - Visualization
+  - Machine Learning
+  - Statistical Inference
+  - Automated reportings (these slides are made in R using Reveal.js)
+- Profund SQL knowledge
+- Fluent in LaTeX and Markdown
+- Basic Python, JavaScript, HTML and CSS
+
+***
+## Extra skills
+
+- Jazz singing
+  - With the band Baggalútur
+  - With a couple of jazz groups
+- Fly fishing
+- Coffee brewing with AeroPress
+- Hoop shooting
+- Diaper changing
+
+--- &vertical
+
+## Examples 
+
+<i><font size=4>Examples of former work is available upon request. Most are based on licenced data and cannot be published publicly.</font></i>
+
+#### My 1000 make believe QuizUp matches
+<font size=4>Presenting location of random generated data and win ratio for each city represented</font>
+
+<center>![](https://dl.dropboxusercontent.com/u/10546458/MyFakeQuizUps.png)
+</center>
+
+<p>&#8595 </p>
+
+***
+
+#### Example from M.Sc. Thesis
+
+<font size=3>Presenting summary of 10 years of wind data and 500 combinations of wind turbines and locations</font>
+
+<center>![](https://dl.dropboxusercontent.com/u/10546458/Thesis.png)
+</center>
+
+--- #social
+
+## Twitter and mail
+<a class="twitter-timeline" href="https://twitter.com/kristbjorn" data-widget-id="435912826578669568">Tweets by @kristbjorn</a>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<p><br></p>
+<a href="mailto:krihel@gmail.com">Send me an email</a>  
