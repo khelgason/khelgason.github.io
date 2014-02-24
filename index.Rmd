@@ -15,6 +15,7 @@ revealjs:
   center: "true"
   previewLinks: "true"
 --- #cover
+<script> .reveal section img {   border: 0px solid #333333; } .grow img {   width: 30px;   -webkit-filter: grayscale(100%);   -webkit-filter: brightness(40%);    -webkit-transition: all 1s ease;      -moz-transition: all 1s ease;        -o-transition: all 1s ease;       -ms-transition: all 1s ease;           transition: all 1s ease; }  .grow img:hover {   -webkit-filter: grayscale(0%);   -webkit-filter: brightness(0%);   width: 90px; } </script>
 
 ## Resumé
 <p>
@@ -22,20 +23,24 @@ revealjs:
 <font size="4">my life in a few HTML slides, automatically generated in R</font>
 <br><font size="2">Press -Esc- for overview of slides</font>
 
+<div class="grow pic">
+  <img src="https://dl.dropboxusercontent.com/u/10546458/kh2015tr.png" alt="Me" width=90>
+</div>
+
 --- #info &vertical
 
 ## Who
 
 ```{r rick, results = 'asis', comment = NA, message = F, echo = F}
 require(rCharts)
-infoKH <- data.frame(item=c('Born on:', 'Married to:', 'Father of:', 'Hobbies:', 'Hobbies:'),
-                     score=c('2 April 1979', 'Inga Maria', 'Julia, Jakob & Joel', 'Reproducable research', 'Technology, Jazz, NBA...'),
+infoKH <- data.frame(item=c('Born on:', 'Married to:', 'Father of:', 'Hobbies:', 'Hobbies:', 'Education:'),
+                     score=c('2 April 1979', 'Inga Maria', 'Julia, Jakob & Joel', 'Reproducable research', 'Technology, Jazz, NBA...', 'M.Sc. Eng.'),
                      numb=c(2,2,3,1,4),
                      xdumb=c(1,2,3,4.5,5),
-                     type=c('info', 'info', 'info', 'hobby', 'hobby'))
+                     type=c('info', 'info', 'info', 'hobby', 'hobby', 'info'))
 
 r1 <- rPlot(score ~ item , data = infoKH, type = "point", color='type')
-r1$set(width=700, height=320)
+r1$set(width=700, height=370)
 r1$guides(y=list(title=""),x=list(title=""))
 r1
 ```
@@ -137,7 +142,7 @@ r1
 - *Actavis (2004-2006)*
   - <font size=6>QA Lab Data Analysis and Equipment Validation</font>
 - *HÍ teaching assistant (2003-2004)*
-  - <font size=6>Teaching Physics Lab-Sessoins</font>
+  - <font size=6>Teaching Physics Lab-Sessions</font>
 - *Landspítali (2002-204)*
   - <font size=6>Statistical Analysis; Part-time</font>
 
@@ -162,17 +167,16 @@ r1
   - With the band Baggalútur
   - With a couple of jazz groups
 - Fly fishing
-- Coffee brewing with AeroPress
 - Hoop shooting
-- Diaper changing
+- Currently establishing an R user group in Iceland
 
 --- &vertical
 
 ## Examples 
 
-<i><font size=4>Examples of former work is available upon request. Most are based on licenced data and cannot be published publicly.</font></i>
+    <p><i><font size=4>Some examples of former work are available upon request, although many are based on licenced data and cannot be displayed.</font></i></p>
 
-#### My 1000 make believe QuizUp matches
+<p><font size=5>1. Thousand randomly generated QuizUp matches mapped</font></p>
 <font size=4>Presenting location of random generated data and win ratio for each city represented</font>
 
 <center>![](https://dl.dropboxusercontent.com/u/10546458/MyFakeQuizUps.png)
@@ -182,9 +186,9 @@ r1
 
 ***
 
-#### Example from M.Sc. Thesis
+    <p><font size=5>2. Example from M.Sc. Thesis</font></p>
 
-<font size=3>Presenting summary of 10 years of wind data and 500 combinations of wind turbines and locations</font>
+<p><font size=3>Presenting summary of 10 years of wind power production for 500 combinations of wind turbines and locations</font></p>
 
 <center>![](https://dl.dropboxusercontent.com/u/10546458/Thesis.png)
 </center>
@@ -197,3 +201,18 @@ r1
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 <p><br></p>
 <a href="mailto:krihel@gmail.com">Send me an email</a>  
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-48376542-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
