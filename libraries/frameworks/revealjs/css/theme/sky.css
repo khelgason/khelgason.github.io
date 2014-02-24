@@ -92,8 +92,10 @@ body {
   
 /*SHRINK*/
 .grow img {
-  width: 20px;
- 
+  width: 30px;
+  -webkit-filter: grayscale(100%);
+  -webkit-filter: brightness(20%);
+
   -webkit-transition: all 1s ease;
      -moz-transition: all 1s ease;
        -o-transition: all 1s ease;
@@ -102,7 +104,7 @@ body {
 }
  
 .grow img:hover {
-  width: 100px;
+  width: 90px;
 }
 
 /*B&W*/
@@ -117,6 +119,8 @@ body {
 .bw:hover {
   -webkit-filter: grayscale(100%);
 }
+
+
 /*********************************************
  * NAVIGATION CONTROLS
  *********************************************/
