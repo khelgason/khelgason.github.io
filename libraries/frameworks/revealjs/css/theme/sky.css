@@ -90,11 +90,11 @@ body {
   border-color: #3b759e;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }
   
-/*SHRINK*/
+/*GROW*/
 .grow img {
   width: 30px;
   -webkit-filter: grayscale(100%);
-  -webkit-filter: brightness(20%);
+  -webkit-filter: brightness(40%);
 
   -webkit-transition: all 1s ease;
      -moz-transition: all 1s ease;
@@ -104,6 +104,8 @@ body {
 }
  
 .grow img:hover {
+  -webkit-filter: grayscale(0%);
+  -webkit-filter: brightness(0%);
   width: 90px;
 }
 
