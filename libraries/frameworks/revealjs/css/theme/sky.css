@@ -89,6 +89,23 @@ body {
   background: rgba(255, 255, 255, 0.2);
   border-color: #3b759e;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }
+  
+/*SHRINK*/
+.shrink img {
+  height: 300px;
+  width: 300px;
+ 
+  -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
+}
+ 
+.shrink img:hover {
+  width: 100px;
+  height: 100px;
+}
 
 /*********************************************
  * NAVIGATION CONTROLS
