@@ -1,4 +1,4 @@
-# My resumé
+# My Resumé
 ### in HTML slides
 
 This project is a test in automated HTML reporting from R... and a quick view of my resumé.
