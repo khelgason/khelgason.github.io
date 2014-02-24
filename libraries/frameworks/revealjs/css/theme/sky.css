@@ -91,9 +91,8 @@ body {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }
   
 /*SHRINK*/
-.shrink img {
-  height: 300px;
-  width: 300px;
+.grow img {
+  width: 20px;
  
   -webkit-transition: all 1s ease;
      -moz-transition: all 1s ease;
@@ -102,9 +101,8 @@ body {
           transition: all 1s ease;
 }
  
-.shrink img:hover {
+.grow img:hover {
   width: 100px;
-  height: 100px;
 }
 
 /*********************************************
