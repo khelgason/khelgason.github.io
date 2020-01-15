@@ -1,10 +1,11 @@
 ---
-title: "Bílastæðanotkun í Reykjavík - Verkefni"
+title: "Bílastæðanotkun í Reykjavík"
+subtitls: "Lausn verkefnis"
 author: "Kristbjörn Helgason"
 date: "7 Jan 2020"
 output: 
   html_document: 
-    theme: flatly
+    theme: spacelab
 ---
 
 ```{r setup, include=FALSE}
@@ -34,7 +35,7 @@ rvk_colors <- c(rgb(red = 0, green = 51/255, blue = 102/255), 'skyblue2', 'grey'
 eigandi_colors <- c('violet', 'darkgreen', 'orange2', 'yellow3', 'navy', 'darkgrey', 'red')
 ```
 
-# Lausnir {.tabset}
+#  {.tabset}
 
 ## 1 Stæði
 ### 1.a Fjöldi bílastæði á hvert póstnumer
@@ -122,17 +123,18 @@ ggplotly(p_mon_by_pn) %>%
   config(displayModeBar = F)
 ```
 
-- Hafa eigandur og gjaldskylda áhrif á dreifingu notkunar?
+- Hafa eigendur og gjaldskylda áhrif á dreifingu notkunar?
 ```{r exploration_by_gjald, fig.width=12}
 p_usage_by_pn_gjald + theme_bw() +
 p_usage_by_pn_eig + theme_bw()
 ```
 
 ##### Niðurstöður:
-  - Ólík dreifing á notkunargildum eftir póstnúmerum
-  - Ólík þróun (trend) notkunar eftir póstnúmerum
-  - Sama árstíðarsveifla virðist vera í öllum póstnúmerum
-  - Hvorki gjaldskylda né eigandi virðast hafa áhrif á dreifingu notkunargilda
+
+- Ólík dreifing á notkunargildum eftir póstnúmerum
+- Ólík þróun (trend) notkunar eftir póstnúmerum
+- Sama árstíðarsveifla virðist vera í öllum póstnúmerum
+- Hvorki gjaldskylda né eigandi virðast hafa áhrif á dreifingu notkunargilda
 
 
 ## 4.b Módel

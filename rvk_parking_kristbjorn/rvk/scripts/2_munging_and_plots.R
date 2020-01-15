@@ -46,12 +46,12 @@ monthly_usage_by_pn <- park_data %>%
 theme_set(theme_minimal()) 
 
 # Plot monthly parking usage
-p_monthly <- ggplot(monthly_usage, aes(x=sk_time, y=usage_mon)) +
+p_monthly <- ggplot(monthly_usage, aes(x=date, y=usage_mon)) +
   geom_line()
 
 # Plot monthly parking usage by postnumer
 p_mon_by_pn <- ggplot(monthly_usage_by_pn) +
-  geom_line(aes(x=sk_time, y=usage_mon, col = factor(postnumer)))  +
+  geom_line(aes(x=date, y=usage_mon, col = factor(postnumer)))  +
   scale_color_viridis_d()
 
 # Plot a few random parking lots usage
