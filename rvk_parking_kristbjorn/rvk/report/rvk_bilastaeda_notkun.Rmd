@@ -1,0 +1,193 @@
+---
+title: "Bílastæðanotkun í Reykjavík - Verkefni"
+author: "Kristbjörn Helgason"
+date: "7 Jan 2020"
+output: 
+  html_document: 
+    theme: flatly
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      fig.width = 10, 
+                      fig.align = 'center',
+                      warning = FALSE, 
+                      message = FALSE, 
+                      suppressPackageStartupMessages = TRUE)
+```
+
+
+```{r load_scripts, cache=TRUE, include=FALSE}
+# source('scripts/1_load_and_clean_data.R')
+# source('scripts/2_munging_and_plots.R')
+# source('scripts/3_plot_maps.R')
+# source('scripts/4_tidy_modelling.R')
+```
+
+```{r libs_and_constants}
+library(dplyr)
+library(plotly)
+library(kableExtra)
+library(patchwork)
+
+rvk_colors <- c(rgb(red = 0, green = 51/255, blue = 102/255), 'skyblue2', 'grey')
+eigandi_colors <- c('violet', 'darkgreen', 'orange2', 'yellow3', 'navy', 'darkgrey', 'red')
+```
+
+# Lausnir {.tabset}
+
+## 1 Stæði
+### 1.a Fjöldi bílastæði á hvert póstnumer
+
+```{r}
+p_postnumer <- d_parking %>% 
+  group_by(postnumer, gjaldskyld) %>% 
+  tally(name = 'n') %>%    # get count per postnumer and gjaldskyld
+  group_by(postnumer) %>%  
+  mutate(n_total_pn = sum(n)) %>%  # get count per postnumer
+  ggplot(aes(x=reorder(postnumer, -n_total_pn), y=n)) +
+  geom_col(aes(fill = gjaldskyld)) +
+  scale_fill_manual(values = rvk_colors) +
+  labs(x = 'Póstnúmer', y = 'Stæði') +
+  theme_minimal() +
+  theme(axis.text.x = element_text(face = 'bold', size = 12, margin = margin(-10,0,0,0)),
+        axis.title = element_text(size = 9))
+
+ggplotly(p_postnumer) %>% config(displayModeBar = F)
+```
+
+
+### 1.b Fjöldi bílastæða á hvern eiganda
+
+```{r}
+t_parking_by_eig %>% 
+  dplyr::rename('Stæði' = n) %>% 
+  DT::datatable(width = 500, options = list(dom = 't', pageLength=10))
+
+```
+
+- Sá einstaki eigandi sem á flest bílastæði er *Reykjavíkurborg*
+- Skráður eigandi á flestum bílastæðum er *Lóðarhafi* en það er ekki einn stakur eigandi heldur ólíkir eigendur á milli lóða
+- Samtals eru *`r d_parking %>% n_distinct()`* bílastæði í gagnasettinu
+- Skráningu vantar fyrir eiganda á *`r d_parking %>% filter(eigandi == '(Vantar)') %>% n_distinct`* bílastæðum
+
+## 2 Kort
+### Kort af bílastæðum í Reykjavík eftir eiganda
+
+```{r}
+parking_map_all
+```
+
+- Hnit bílastæðanna rúnnuð að 3 aukastöfum (fyrir lat er viðbættur fjórði aukastafur rúnnaður á næsta 5)
+- Þetta hliðrar staðsetningu ögn en gefur þó rétta mynd af dreifingu bílastæðanna
+- Handahófs-örhniki er einnig bætt við til að minnka yfirteiknun.
+- Stærð hvers punkts á kortinu ræðst af heildarfjölda stæða á því hniti.
+
+
+## 3 Join 
+### "Joinun" taflanna og fyrstu 20 raðir útkomunnar
+
+```{r join, echo=T, results='hide', eval=FALSE}
+f_parking %>% 
+  left_join(d_calendar, by = 'sk_time') %>% 
+  left_join(d_parking, by = 'sk_parking')
+```
+
+
+```{r}
+park_data_head20 %>% 
+  knitr::kable(row.names = F) %>% 
+  kableExtra::kable_styling(bootstrap_options = c("striped", "hover"), full_width = F)
+```
+
+
+## 4.a Data Exploration
+
+### Data Exploration
+
+- Notkun nokkura bílastæða af handahófi
+```{r exploration_samples}
+p_some_lots
+```
+
+- Mánaðarleg heildarnotkun allra bílastæða
+```{r exploration_all}
+p_monthly
+```
+
+- Mánaðarleg heildarnotkun bílastæða eftir póstnumeri
+```{r exploration_by_pn}
+ggplotly(p_mon_by_pn) %>% 
+  layout(yaxis = list(autorange = TRUE)) %>% 
+  config(displayModeBar = F)
+```
+
+- Hafa eigandur og gjaldskylda áhrif á dreifingu notkunar?
+```{r exploration_by_gjald, fig.width=12}
+p_usage_by_pn_gjald + theme_bw() +
+p_usage_by_pn_eig + theme_bw()
+```
+
+##### Niðurstöður:
+  - Ólík dreifing á notkunargildum eftir póstnúmerum
+  - Ólík þróun (trend) notkunar eftir póstnúmerum
+  - Sama árstíðarsveifla virðist vera í öllum póstnúmerum
+  - Hvorki gjaldskylda né eigandi virðast hafa áhrif á dreifingu notkunargilda
+
+
+## 4.b Módel
+
+#### Decomposition
+
+- Miðað við niðurstöður að ofan þarf módel að taka tillit til árstíðarsveiflu, trends og póstnúmers
+- Graf að neðan sýnir decomposition á þessum þáttum fyrir hvert póstnúmer
+```{r dec}
+ggplotly(p_mon_dec_by_pn) %>% 
+  layout(yaxis = list(autorange = TRUE)) %>% 
+  config(displayModeBar = F)
+```
+
+#### Módel val
+
+- ARIMA módel henta mjög vel til að módela non-stationary, árstíðarbundin gögn
+- Parametrar leyfa mikinn sveigjanleika, varast þarf overfitting
+- Greining á heildargögnum gefur parametrana `ARIMA(0,1,1)(2,1,0)[12]` sem eru notaðir á hvert póstnúmer, til að koma í veg fyrir overfitting
+
+Grafið að neðan sýnir niðurstöður þess að fitta ARIMA módelið við hvert póstnúmer. Til samanburðar er bætt inn einföldu línulegu módeli sem tekur ekki til greina árstíðarsveiflu.
+
+```{r fig.width=12, fig.height=7}
+p_models_by_pn
+```
+
+#### Spáskekkja módels
+
+- Til að greina nákvæmni módelsins er það fittað við gögn 2011-2016 og spá þess borin saman við raungögn 2017-2019
+- Hér er spá m.v. raun fyrir tvö ólík póstnúmer
+```{r}
+p_model_performance
+```
+
+- Munur á spá og raungögnum um notkun 2017-2019 er 0,06%
+```{r}
+p_forecast_vs_actual
+```
+
+### Notkun 2020
+
+- Til að spá um notkun 2020 er módel fittað á öll gögnin.
+- Notkun 2020 skv. módeli:
+
+```{r}
+p_act_forec <- ggplot(usage_act_and_forec, aes(x=factor(year), y=usage, fill=key)) +
+  geom_col() +
+  geom_errorbar(aes(ymin=lower_forec, ymax=upper_forec), 
+                    width=.2, position=position_dodge(1.9)) +
+  scale_fill_manual(values = rvk_colors)+
+  labs(x='year')
+
+ggplotly(p_act_forec)
+```
+
+Áætluð notkun 2020:  *205.023.051 ± 618.096 (0.3%)*
+
+
