@@ -7,20 +7,26 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <header>
         <div class="container">
             <div class="logo">
+              <a href="#top">
                 <img src="img/kdata_600.png" alt="KData Logo" class="logo-large">
                 <img src="img/kdata_200.png" alt="KData Logo" class="logo-small">
+              </a>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#top">Home</a></li>
                     <li><a href="#services">Services</a></li>
+                    <li><a href="#our-work">Clients</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -34,38 +40,14 @@
 
     <section id="home" class="hero">
         <div class="container">
-            <h1>Data Science Consultancy</h1>
-            <p>Turn your data into actionable insights with advanced analytics, data modeling and AI</p>
+            <h1>KData</h1>
+            <hr>
+            <h2>Data Science Consultancy</h2>
+            <p>Helping businesses leverage data for growth and innovation</p>
             <a href="#contact" class="scroll-down">
                 <i class="fas fa-chevron-down"></i>
             </a>
         </div>
-    </section>
-
-    <section id="about" class="about">
-        <div class="container">
-            <h2>About KData</h2>
-            <p>KData is a data science consultancy helping businesses leverage data for growth and innovation. 
-                We specialize in data strategy, predictive analytics and custom data reporting solutions</p>
-        </div>
-        <div class="our-work">
-            <h3>Our Clients</h3>
-            <p>These are some of the clients we've worked with to unlock the value of their data</p>
-            <div class="client-grid">
-              <div class="client-item">
-                <img src="img/client_abler.png" alt="Abler">
-              </div>
-              <div class="client-item">
-                <img src="img/client_play.png" alt="Play">
-              </div>
-              <div class="client-item">
-                <img src="img/client_fagkaup.png" alt="Fagkaup">
-              </div>
-              <div class="client-item">
-                <img src="img/client_gangverk.png" alt="Gangverk">
-              </div>
-            </div>
-          </div>      
     </section>
 
     <section id="services" class="services">
@@ -87,6 +69,29 @@
             </div>
         </div>
     </section>
+
+    <hr>
+
+    <section id="our-work" class="about">
+      <div class="our-work">
+          <h3>Our Clients</h3>
+          <p>These are some of the clients we've worked with to unlock the value of their data</p>
+          <div class="client-grid">
+            <div class="client-item">
+              <img src="img/client_abler.png" alt="Abler">
+            </div>
+            <div class="client-item">
+              <img src="img/client_play.png" alt="Play">
+            </div>
+            <div class="client-item">
+              <img src="img/client_fagkaup.png" alt="Fagkaup">
+            </div>
+            <div class="client-item">
+              <img src="img/client_gangverk.png" alt="Gangverk">
+            </div>
+          </div>
+        </div>      
+  </section>
 
     <!-- Contact Form Section -->
     <section class="contact" id="contact">
@@ -119,7 +124,9 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-logo">
-            <img src="img/kdata_dark.png" alt="Company Logo" class="logo-small" height="40px">
+            <a href="#top">
+              <img src="img/kdata_dark.png" alt="Company Logo" class="logo-small" height="40px">
+            </a>
           </div>
           <div class="footer-links">
             <ul>

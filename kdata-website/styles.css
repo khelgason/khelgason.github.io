@@ -4,8 +4,20 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+hr {
+  width: 15%;
+  border: 0;
+  height: 1px; /* Set the height of the line */
+  background-color: #333; /* Set the color of the line */
+  margin: 20px auto; /* Center the hr element and add space around it */
+}
+
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
   color: #333;
   background-color: #fff;
   line-height: 1.6;
@@ -21,6 +33,25 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
+h1 {
+  font-size: 48px;
+  font-family: 'Georgia', serif;
+  margin-bottom: 5px;
+}
+
+h2 {
+  font-size: 36px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+h3 {
+  font-size: 28px;
+  margin-bottom: 0px;
+  color: #333;
+}
+
 header {
   position: sticky;
   top: 0;
@@ -31,7 +62,7 @@ header {
 }
 
 header.sticky {
-  padding: 10px 0;
+  padding: 10px 0 5px 0;
 }
 
 header .container {
@@ -104,11 +135,6 @@ nav ul li a:hover {
   color: #333;
 }
 
-.hero h1 {
-  font-size: 48px;
-  font-family: 'Georgia', serif;
-  margin-bottom: 5px;
-}
 
 .hero p {
   font-size: 20px;
@@ -140,27 +166,20 @@ nav ul li a:hover {
 }
 
 .about, .services {
-  padding: 60px 0;
+  padding: 40px 0;
   text-align: center;
 }
 
-.about::after {
+/* .services::after {
   content: '';
   position: absolute;
   left: 50%;
-  margin-top: 60px;
+  margin-top: 50px;
   transform: translateX(-50%);
   width: 15%;
   height: 1px;
   background-color: #666;
-}
-
-.about h2, .services h2 {
-  font-size: 36px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  color: #333;
-}
+} */
 
 .about p {
   font-size: 18px;
@@ -170,13 +189,7 @@ nav ul li a:hover {
 }
 
 .our-work {
-  margin-top: 60px;
-}
-
-.our-work h3 {
-  font-size: 28px;
-  margin-bottom: 30px;
-  color: #333;
+  margin: 40px 0 0 0;
 }
 
 .client-grid {
