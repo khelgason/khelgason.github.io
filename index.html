@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KData - Data Science Consultancy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+              <a href="#top">
+                <img src="img/kdata_600.png" alt="KData Logo" class="logo-large">
+                <img src="img/kdata_200.png" alt="KData Logo" class="logo-small">
+              </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#top">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#our-work">Clients</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="burger-menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>KData</h1>
+            <hr>
+            <h2>Data Science Consultancy</h2>
+            <p>Helping businesses leverage data for growth and innovation</p>
+            <a href="#contact" class="scroll-down">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="service-cards">
+                <div class="service-card">
+                    <h3>Data Strategy Consulting</h3>
+                    <p>We work with you to develop a comprehensive data strategy that aligns with your goals</p>
+                </div>
+                <div class="service-card">
+                    <h3>Data Reporting</h3>
+                    <p>Transform raw data into meaningful insights through visualizations and dashboards</p>
+                </div>
+                <div class="service-card">
+                    <h3>AI & Machine Learning</h3>
+                    <p>Use the power of ML to predict trends, optimize processes, and make smarter decisions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <section id="our-work" class="about">
+      <div class="our-work">
+          <h2>Our Clients</h2>
+          <p>These are some of the clients we've worked with to unlock the value of their data</p>
+          <div class="client-grid">
+            <div class="client-item">
+              <img src="img/client_abler.png" alt="Abler">
+            </div>
+            <div class="client-item">
+              <img src="img/client_play.png" alt="Play">
+            </div>
+            <div class="client-item">
+              <img src="img/client_fagkaup.png" alt="Fagkaup">
+            </div>
+            <div class="client-item">
+              <img src="img/client_gangverk.png" alt="Gangverk">
+            </div>
+          </div>
+        </div>      
+  </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+          <h2>Get in Touch</h2>
+          <form action="https://formspree.io/f/xgveevek" method="POST">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message">Message (optional):</label>
+              <textarea id="message" name="message" rows="4"></textarea>
+            </div>
+            <!-- Google reCAPTCHA widget -->
+            <!-- <div class="g-recaptcha" data-sitekey="6Lc4Wl8qAAAAAKxlogScQRcogn7Svtujk6FDsWGu"></div> -->
+            <!-- button -->
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <a href="#top">
+              <img src="img/kdata_dark.png" alt="Company Logo" class="logo-small" height="40px">
+            </a>
+          </div>
+          <div class="footer-links">
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-social">
+            <a href="https://www.linkedin.com/company/kdata-is" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+            <!-- <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a> -->
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 KData. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+
+        const burgerMenu = document.querySelector('.burger-menu');
+        const nav = document.querySelector('nav ul');
+
+        burgerMenu.addEventListener('click', () => {
+            nav.classList.toggle('show');
+            burgerMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
