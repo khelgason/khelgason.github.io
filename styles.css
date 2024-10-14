@@ -232,7 +232,6 @@ nav ul li a:hover {
 .service-card:nth-child(1) {
   width: 100%;
   max-width: 900px;
-  margin-bottom: 30px; /* Add extra space below the first card */
 }
 
 .service-card:nth-child(2),
