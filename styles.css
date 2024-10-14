@@ -25,6 +25,7 @@ body {
 
 .container {
   width: 90%;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -174,7 +175,8 @@ nav ul li a:hover {
 }
 
 .our-work {
-  margin: 40px 0 0 0;
+  margin: 40px auto;
+  max-width: 1100px;
 }
 
 .client-grid {
@@ -212,6 +214,7 @@ nav ul li a:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   margin: 0 auto;
 }
 
@@ -232,6 +235,7 @@ nav ul li a:hover {
 .service-card:nth-child(1) {
   width: 100%;
   max-width: 900px;
+  min-width: 100%;
 }
 
 .service-card:nth-child(2),
@@ -242,6 +246,7 @@ nav ul li a:hover {
 
 .service-card:nth-child(2) {
   margin-right: 20px;
+  clear: both; /* Forces the second card to start on a new line */
 }
 
 .contact {
@@ -380,7 +385,7 @@ footer {
     flex-direction: column;
     align-items: center;
     padding: 20px 0;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   }
 
   nav ul.show {
