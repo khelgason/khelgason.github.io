@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KData - Data Science Consultancy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+              <a href="#top">
+                <img src="img/kdata_600.png" alt="KData Logo" class="logo-large">
+                <img src="img/kdata_200.png" alt="KData Logo" class="logo-small">
+              </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#top">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#our-work">Clients</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="burger-menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </header>
+
+    <section id="embed" class="embed-section">
+        <div class="container">
+            <h2>Embedded Content</h2>
+            <iframe src="https://grid.is/embed/abler-0ONemkz0QxCvmgr9_P5uCA?width=full&scale_to_fit=true" width="100%" height="500" data-document-id="d0e35e9a-4cf4-4310-af9a-0afdfcfe6e08" style="border: 0px;" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <script type="text/javascript" src="https://grid.is/static/embed/v1/script.js"></script>
+        </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <a href="#top">
+              <img src="img/kdata_dark.png" alt="Company Logo" class="logo-small" height="40px">
+            </a>
+          </div>
+          <div class="footer-links">
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-social">
+            <a href="https://www.linkedin.com/company/kdata-is" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 KData. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+
+        const burgerMenu = document.querySelector('.burger-menu');
+        const nav = document.querySelector('nav ul');
+
+        burgerMenu.addEventListener('click', () => {
+            nav.classList.toggle('show');
+            burgerMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
