@@ -25,31 +25,28 @@ body {
 
 .container {
   width: 90%;
-  margin: 0 auto 0 auto;
+  margin: 0 auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Georgia', serif;
   text-align: center;
+  color: #333;
 }
 
 h1 {
   font-size: 48px;
-  font-family: 'Georgia', serif;
   margin-bottom: 5px;
 }
 
 h2 {
   font-size: 36px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  color: #333;
+  margin: 30px;
 }
 
 h3 {
-  font-size: 28px;
-  margin-bottom: 0px;
-  color: #333;
+  font-size: 24px;
+  margin-bottom: 10;
 }
 
 header {
@@ -135,7 +132,6 @@ nav ul li a:hover {
   color: #333;
 }
 
-
 .hero p {
   font-size: 20px;
   margin-bottom: 40px;
@@ -170,17 +166,6 @@ nav ul li a:hover {
   text-align: center;
 }
 
-/* .services::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  margin-top: 50px;
-  transform: translateX(-50%);
-  width: 15%;
-  height: 1px;
-  background-color: #666;
-} */
-
 .about p {
   font-size: 18px;
   color: #666;
@@ -194,7 +179,6 @@ nav ul li a:hover {
 
 .client-grid {
   display: grid;
-  max-width: 1000px;
   grid-template-columns: repeat(auto-fit, minmax(100px, 2fr));
   gap: 20px;
   justify-items: center; /* Centers items horizontally */
@@ -228,7 +212,6 @@ nav ul li a:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -239,6 +222,11 @@ nav ul li a:hover {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   border: 1px solid #ccc;
   margin-bottom: 20px;
+}
+
+.service-card p {
+  font-size: 16px;
+  color: #666;
 }
 
 .service-card:nth-child(1) {
@@ -257,19 +245,8 @@ nav ul li a:hover {
   margin-right: 20px;
 }
 
-.service-card h3 {
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: #333;
-}
-
-.service-card p {
-  font-size: 16px;
-  color: #666;
-}
-
 .contact {
-  padding: 60px 0;
+  padding: 40px 0 40px 0;
   background-color: #f9f9f9;
   display: flex;
   flex-direction: column; /* Makes sure elements stack vertically */
@@ -277,14 +254,10 @@ nav ul li a:hover {
   justify-content: center; /* Centers horizontally */
 }
 
-.contact h2 {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
 .contact form {
   max-width: 600px;
   margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 .form-row {
@@ -408,7 +381,7 @@ footer {
     flex-direction: column;
     align-items: center;
     padding: 20px 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
   }
 
   nav ul.show {
@@ -424,20 +397,11 @@ footer {
     align-items: center;
   }
 
-  .service-card {
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .service-card:nth-child(1) {
-    width: 100%;
-    margin: 10px;
-  }
-  
+  .service-card:nth-child(1),
   .service-card:nth-child(2),
   .service-card:nth-child(3) {
     width: 100%;
-    margin: 10px;
+    margin: 10px auto; /* Adds equal left and right margins */
     max-width: 100%;
   }
 
@@ -455,6 +419,16 @@ footer {
   
   .client-grid {
     grid-template-columns: repeat(2, 1fr);
+    max-width: 80%;
+  }
+
+  .client-item {
+    padding: 10px;
+  }
+  
+  .client-item img {
+    max-width: 150px;
+    height: auto;
   }
 
   .form-row {
